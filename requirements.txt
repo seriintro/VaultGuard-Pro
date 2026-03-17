@@ -1,0 +1,16 @@
+# Web Framework
+flask
+flask-cors
+
+# Face Recognition & Computer Vision
+face_recognition
+opencv-python
+numpy
+
+# Security & Authentication
+bcrypt
+PyJWT
+cryptography
+
+# Utilities
+requests

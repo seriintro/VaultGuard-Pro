@@ -1,0 +1,7 @@
+{
+    "admin": {
+        "gate1": true,
+        "gate2": true,
+        "vault": true
+    }
+}

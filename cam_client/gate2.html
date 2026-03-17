@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gate 2 - Face + Password</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Add grey left border for Gate 2 */
+        .gate2-container {
+            border-left: 5px solid #7f8c8d;
+        }
+    </style>
+</head>
+<body class="secure-body">
+    <div class="secure-container gate2-container">
+        <div class="header-section">
+            <div class="logo-container">
+                <i class="fas fa-door-open"></i>
+            </div>
+            <h1>Gate 2 Access</h1>
+            <p class="vault-description">Face recognition and password required</p>
+        </div>
+        
+        <div class="camera-container">
+            <video id="video" autoplay playsinline></video>
+            <canvas id="canvas" style="display: none;"></canvas>
+            <div class="camera-controls">
+                <button id="captureBtn" class="btn btn-primary"><i class="fas fa-camera"></i> Capture</button>
+                <button id="retakeBtn" class="btn btn-secondary" style="display: none;"><i class="fas fa-redo"></i> Retake</button>
+            </div>
+        </div>
+        
+        <div id="previewContainer" style="display: none;">
+            <img id="preview" alt="Captured image">
+        </div>
+        
+        <div id="passwordContainer" class="form-group" style="display: none;">
+            <label for="password"><i class="fas fa-key"></i> Enter Password:</label>
+            <input type="password" id="password" class="form-control">
+        </div>
+        
+        <div id="statusContainer" class="status-container">
+            <p id="statusMessage" class="status-message"></p>
+        </div>
+        
+        <button id="submitBtn" class="btn btn-success" style="display: none;"><i class="fas fa-check"></i> Verify Access</button>
+        
+        <div class="navigation">
+            <a href="index.html" class="btn btn-text"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize camera
+            initCamera('video');
+            
+            // Set up event listeners
+            document.getElementById('captureBtn').addEventListener('click', () => {
+                captureImage('video', 'canvas', 'preview');
+                document.getElementById('captureBtn').style.display = 'none';
+                document.getElementById('retakeBtn').style.display = 'block';
+                document.getElementById('previewContainer').style.display = 'block';
+                document.getElementById('passwordContainer').style.display = 'block';
+                document.getElementById('submitBtn').style.display = 'block';
+            });
+            
+            document.getElementById('retakeBtn').addEventListener('click', () => {
+                document.getElementById('previewContainer').style.display = 'none';
+                document.getElementById('passwordContainer').style.display = 'none';
+                document.getElementById('captureBtn').style.display = 'block';
+                document.getElementById('retakeBtn').style.display = 'none';
+                document.getElementById('submitBtn').style.display = 'none';
+                document.getElementById('statusMessage').textContent = '';
+            });
+            
+            document.getElementById('submitBtn').addEventListener('click', () => {
+                const imageBase64 = document.getElementById('canvas').toDataURL('image/jpeg').split(',')[1];
+                const password = document.getElementById('password').value;
+                verifyGate2Access(imageBase64, password);
+            });
+        });
+        
+        async function verifyGate2Access(imageBase64, password) {
+            const statusMessage = document.getElementById('statusMessage');
+            statusMessage.textContent = 'Verifying...';
+            statusMessage.className = 'status-message status-pending';
+            
+            try {
+                const response = await fetch('https://4769-2405-201-4030-a0ee-fd18-5168-30f8-8fe0.ngrok-free.app/api/gate2-access', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        image: imageBase64,
+                        password: password
+                    })
+                });
+                
+                const data = await response.json();
+                statusMessage.textContent = data.message;
+                
+                if (data.access === true) {
+                    statusMessage.className = 'status-message status-success';
+                } else {
+                    statusMessage.className = 'status-message status-error';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                statusMessage.textContent = 'Connection error. Please try again.';
+                statusMessage.className = 'status-message status-error';
+            }
+        }
+    </script>
+</body>
+</html>

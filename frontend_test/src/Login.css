@@ -1,0 +1,236 @@
+/* Login.css modifications */
+:root {
+  --login-bg-start: #0C1A2B;
+  --login-bg-middle: #112638;
+  --login-bg-end: #1E3A4C;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Login page specific background */
+.login-page-wrapper {
+  background: radial-gradient(circle at center, 
+    var(--login-bg-start) 0%, 
+    var(--login-bg-middle) 50%, 
+    var(--login-bg-end) 100%
+  );
+  margin: 0;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.login-box {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 
+    0 0 30px rgba(0, 174, 255, 0.2),
+    inset 0 0 15px rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.login-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg, 
+    transparent, 
+    transparent 30%, 
+    rgba(255, 255, 255, 0.1), 
+    rgba(255, 255, 255, 0.3) 70%, 
+    transparent
+  );
+  transform: rotate(45deg);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.login-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Heading Styles */
+.security-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  text-align: left;
+}
+
+.v2-text {
+  color: #00aaff;
+  text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+}
+
+.profile-area {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.background-circle {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon-circle {
+  position: relative;
+  z-index: 2;
+  font-size: 30px;
+  border: 2px solid #00aaff;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00aaff;
+  background: rgba(0, 170, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 12px 15px;
+  transition: all 0.3s ease;
+}
+
+.input-box:focus-within {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
+}
+
+.input-box svg {
+  color: #aaa;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.input-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #fff;
+  font-size: 16px;
+}
+
+.input-box input::placeholder {
+  color: #888;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #aaa;
+  margin: 20px 0 30px;
+  align-items: center;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: #00aaff;
+}
+
+.options a {
+  color: #00aaff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.options a:hover {
+  color: #66ccff;
+}
+
+.login-btn {
+  background: #0095ff;
+  border: none;
+  padding: 14px 0;
+  width: 100%;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 149, 255, 0.4);
+  letter-spacing: 1px;
+}
+
+.login-btn:hover {
+  background: #00a8ff;
+  box-shadow: 0 6px 20px rgba(0, 168, 255, 0.5);
+}
+
+.error-message {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}

@@ -1,0 +1,837 @@
+:root {
+  --dark-bg: #0a0f18;
+  --sidebar-bg: #0a1121;
+  --text-color: #ffffff;
+  --secondary-text: #a7b6c2;
+  --button-bg: #00c2b2;
+  --button-hover: #00a395;
+  --card-bg: #131c2d;
+  --border-color: #1e2c42;
+  --active-bg: rgba(255, 255, 255, 0.08);
+}
+
+/* Reset body styles */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-color);
+}
+
+/* Container layout with padding for sidebar spacing */
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--dark-bg);
+  padding: 15px 0 15px 15px; /* Added padding top, bottom, left */
+  position: relative; /* Add this */
+  overflow: hidden; /* Add this */
+}
+
+/* Sidebar styles with rounded corners and proper spacing */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(-90deg, #00c2ff 0%, #121b2e 3%);
+  height: calc(100vh - 30px); /* Change min-height to height */
+  position: fixed; /* Change from relative to fixed */
+  padding: 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  overflow-y: auto; /* Add scrolling to sidebar if needed */
+  overflow-x: hidden;
+  z-index: 10; /* Ensure sidebar stays on top */
+}
+
+.logo {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 10px;
+}
+
+.logo-icon {
+  color: var(--button-bg);
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.search-bar {
+  padding: 10px 15px;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px 15px 8px 35px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--button-bg);
+}
+
+.search-icon {
+  position: absolute;
+  left: 25px;
+  top: 19px;
+  color: var(--secondary-text);
+}
+
+/* Nav items with rounded corners like Netlify */
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: var(--secondary-text);
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 8px; /* Increased border radius for nav items */
+  margin: 4px 10px;
+  font-size: 14px;
+  position: relative;
+  font-weight: 500;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+}
+
+.nav-item.active {
+  color: var(--text-color);
+  background-color: var(--active-bg);
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 30%;
+  height: 40%;
+  width: 3px;
+  background-color: var(--button-bg);
+  border-radius: 0 3px 3px 0;
+}
+
+.nav-icon {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-text);
+}
+
+.nav-item.active .nav-icon {
+  color: var(--text-color);
+}
+
+.logout-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  right: 10px;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 8px; /* Increased border radius */
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logout-btn:hover {
+  background-color: var(--button-hover);
+}
+
+/* Main content styles */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--dark-bg);
+  margin-left: 265px; /* Add left margin to account for fixed sidebar width (250px) + gap (15px) */
+  min-height: calc(100vh - 30px);
+  width: calc(100% - 285px); /* Adjust width calculation */
+  overflow-y: auto; /* Allow main content to scroll independently */
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--secondary-text);
+  cursor: pointer;
+  font-size: 16px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px; /* Increased border radius */
+  padding: 0;
+}
+
+.icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+}
+
+.header-icon {
+  color: var(--text-color);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px; /* Increased border radius */
+  width: 36px;
+  height: 36px;
+}
+
+.header-icon:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.badge {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  border-radius: 12px; /* Increased border radius */
+  padding: 18px 20px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.stat-title {
+  color: var(--secondary-text);
+  font-size: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.sites-container {
+  background-color: var(--card-bg);
+  border-radius: 12px; /* Increased border radius */
+  padding: 20px;
+  min-height: 200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+/* Tab Navigation */
+.tab-navigation {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  color: var(--secondary-text);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.tab-button:hover {
+  color: var(--text-color);
+}
+
+.tab-button.active {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--button-bg);
+}
+
+/* Logs Table */
+.logs-container {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.logs-container h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.logs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.logs-table th,
+.logs-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logs-table th {
+  font-weight: 500;
+  color: var(--secondary-text);
+}
+
+.logs-table tr:last-child td {
+  border-bottom: none;
+}
+
+.logs-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Add this to your Home.css file */
+
+.search-feedback {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: var(--secondary-text);
+  border: 1px solid var(--border-color);
+}
+
+.search-feedback span {
+  display: flex;
+  align-items: center;
+}
+
+.clear-search {
+  background: none;
+  border: none;
+  color: var(--secondary-text);
+  cursor: pointer;
+  font-size: 13px;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.clear-search:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+}
+
+.clear-search svg {
+  margin-right: 5px;
+}
+
+/* Chart specific styles - add these to your Home.css file */
+
+.chart-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 992px) {
+  .chart-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.chart-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden; /* For responsive container */
+}
+
+.chart-card h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Custom tooltip styles */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px;
+  padding: 10px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.recharts-tooltip-label {
+  color: var(--text-color) !important;
+  font-weight: 500 !important;
+  margin-bottom: 6px !important;
+}
+
+.recharts-tooltip-item-list {
+  padding-left: 0 !important;
+}
+
+.recharts-tooltip-item {
+  color: var(--secondary-text) !important;
+  padding: 3px 0 !important;
+}
+
+/* Loading state for charts */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--secondary-text);
+  font-size: 14px;
+  background: rgba(19, 28, 45, 0.5);
+  border-radius: 8px;
+}
+
+/* Add a subtle grid */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Style the axis lines */
+.recharts-xAxis .recharts-cartesian-axis-line,
+.recharts-yAxis .recharts-cartesian-axis-line {
+  stroke: var(--border-color) !important;
+}
+
+/* Style the tick lines */
+.recharts-xAxis .recharts-cartesian-axis-tick-line,
+.recharts-yAxis .recharts-cartesian-axis-tick-line {
+  stroke: var(--border-color) !important;
+}
+
+/* Style the legend */
+.recharts-default-legend {
+  margin-top: 10px !important;
+}
+
+.recharts-legend-item-text {
+  color: var(--secondary-text) !important;
+  font-size: 12px !important;
+}
+
+/* Enhance hover interaction */
+.recharts-tooltip-cursor {
+  stroke: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Style for bars and lines */
+.recharts-layer.recharts-bar-rectangle {
+  transition: opacity 0.2s;
+}
+
+.recharts-layer.recharts-bar-rectangle:hover {
+  opacity: 0.8;
+}
+
+/* Active dot enhancement */
+.recharts-dot.recharts-active-dot {
+  stroke: var(--dark-bg) !important;
+  stroke-width: 2 !important;
+}
+
+/* Chart animation transition */
+.recharts-surface {
+  transition: all 0.3s ease;
+}
+
+/* Chart responsive container */
+.recharts-responsive-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Add interactive effect on hover */
+.chart-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Style dot colors to match theme */
+.recharts-dot {
+  stroke: var(--dark-bg) !important;
+  stroke-width: 1px !important;
+}
+
+/* Add these styles to your Home.css file */
+
+/* Existing styles */
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 200px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.chart-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.chart-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1;
+  min-width: 300px;
+  overflow: hidden;
+}
+
+.chart-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--secondary-text);
+}
+
+/* New styles for the enhanced dashboard */
+.dashboard-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 200px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* New styles for security trend */
+.security-trend {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  gap: 0.25rem;
+}
+
+.security-trend.improving {
+  color: #00c2b2;
+}
+
+.chart-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 300px;
+  transition: all 0.3s ease;
+}
+
+.chart-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.chart-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.activity-feed-container {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.activity-feed-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-feed-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+/* Updated activity feed styles - removed max-height and overflow-y */
+.activity-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Add this class for the non-scrollable feed */
+.activity-feed.no-scroll {
+  overflow-y: visible;
+  height: auto;
+  /* Increase height to fit 5 entries comfortably */
+  min-height: 350px;
+}
+
+.activity-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 0.75rem;
+  border-left: 4px solid transparent;
+  transition: background-color 0.2s;
+}
+
+.activity-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.activity-name {
+  font-weight: 600;
+}
+
+.activity-time {
+  font-size: 0.8rem;
+  color: var(--secondary-text);
+}
+
+.activity-details {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.activity-role {
+  background-color: rgba(77, 121, 255, 0.2);
+  color: #4d79ff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.activity-gate {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Always highlight status based on success/failure/authentication */
+.activity-status {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+  font-weight: 500;
+}
+
+.activity-status.success {
+  color: #00c2b2;
+}
+
+.activity-status.failure {
+  color: #ff6b6b;
+}
+
+/* New style for authentication status */
+.activity-status.authentication {
+  color: #b275ff; /* Violet color for authentication statuses */
+  background-color: rgba(178, 117, 255, 0.1); /* Light violet background */
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.no-activity {
+  text-align: center;
+  color: var(--secondary-text);
+  padding: 2rem;
+}
+
+.chart-container.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--secondary-text);
+  font-size: 14px;
+  background: rgba(19, 28, 45, 0.5);
+  border-radius: 8px;
+}
+
+/* Optional: Add a subtle pulsing animation for authentication statuses */
+@keyframes subtle-pulse {
+  0% { opacity: 0.9; }
+  50% { opacity: 1; }
+  100% { opacity: 0.9; }
+}
+
+.activity-status.authentication {
+  animation: subtle-pulse 2s infinite ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-row {
+    flex-direction: column;
+  }
+  
+  .chart-card {
+    min-width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .stat-card {
+    min-width: 100%;
+  }
+  
+  .activity-feed.no-scroll {
+    min-height: auto;
+  }
+}

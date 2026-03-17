@@ -1,0 +1,34 @@
+/* src/styles/home.css */
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+  }
+  
+  .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    display: inline-block;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer; /* Make it feel clickable */
+    border: none;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  

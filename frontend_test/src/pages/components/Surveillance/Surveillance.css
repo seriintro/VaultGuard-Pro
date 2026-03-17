@@ -1,0 +1,40 @@
+.surveillance-container { display: flex; gap: 20px; height: calc(100vh - 140px); }
+.control-panel { width: 280px; background-color: var(--card-bg); border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 20px; }
+.control-section { border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+.control-section:last-child { border-bottom: none; padding-bottom: 0; }
+.control-section h3 { font-size: 16px; font-weight: 500; margin-bottom: 15px; color: var(--text-color); }
+.button-group { display: flex; flex-direction: column; gap: 10px; }
+.control-button { display: flex; align-items: center; gap: 8px; padding: 10px 15px; border-radius: 8px; font-weight: 500; border: none; cursor: pointer; transition: all 0.2s ease; color: var(--text-color); }
+.control-button.primary { background-color: var(--button-bg); }
+.control-button.primary:hover { background-color: var(--button-hover); }
+.control-button.danger { background-color: #e53e3e; }
+.control-button.danger:hover { background-color: #c53030; }
+.control-button.disabled { background-color: rgba(255,255,255,0.1); color: var(--secondary-text); cursor: not-allowed; }
+.select-wrapper { position: relative; }
+.camera-select { width: 100%; padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border-color); background-color: rgba(255,255,255,0.05); appearance: none; font-size: 14px; color: var(--text-color); }
+.camera-select option { background-color: #2d3748; color: white; }
+.select-arrow { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none; color: var(--secondary-text); }
+.status-indicator { display: flex; align-items: center; gap: 10px; }
+.status-circle { width: 12px; height: 12px; border-radius: 50%; }
+.status-circle.active { background-color: #48bb78; box-shadow: 0 0 0 3px rgba(72,187,120,0.2); }
+.status-circle.inactive { background-color: #e53e3e; box-shadow: 0 0 0 3px rgba(229,62,62,0.2); }
+.status-text { font-weight: 500; color: var(--text-color); }
+.zoom-level { font-weight: 500; color: var(--text-color); text-align: center; font-size: 16px; }
+.feed-container { flex: 1; background-color: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: flex; flex-direction: column; }
+.feed-header { padding: 15px 20px; background-color: var(--sidebar-bg); color: var(--text-color); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
+.feed-header h2 { font-size: 18px; font-weight: 500; margin: 0; }
+.feed-status { display: flex; align-items: center; gap: 15px; }
+.recording-indicator { display: flex; align-items: center; gap: 5px; }
+.rec-circle { width: 10px; height: 10px; border-radius: 50%; background-color: #e53e3e; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+.timestamp { font-size: 14px; color: var(--secondary-text); }
+.feed-display { flex: 1; background-color: var(--dark-bg); position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+.live-feed-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+.no-feed { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.no-feed svg { margin-bottom: 15px; }
+.no-feed p { font-size: 15px; text-align: center; max-width: 300px; line-height: 1.5; color: var(--secondary-text); }
+.feed-footer { padding: 15px; background-color: var(--sidebar-bg); display: flex; justify-content: center; border-top: 1px solid var(--border-color); }
+.feed-controls { display: flex; gap: 15px; }
+.icon-control { background-color: rgba(255,255,255,0.1); border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; padding: 0; }
+.icon-control:disabled { opacity: 0.5; cursor: not-allowed; }
+.icon-control:hover:not(:disabled) { background-color: rgba(255,255,255,0.2); }
