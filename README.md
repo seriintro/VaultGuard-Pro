@@ -8,6 +8,12 @@ VaultGuard Pro is a full-stack security system that simulates real-world access 
 <img width="900" height="871" alt="Screenshot 2025-05-18 175555" src="https://github.com/user-attachments/assets/397a9bb7-c7ec-41c7-8a6e-a3c61407841a" />
 </p>
 
+[Live surveillance feed]
+<p style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/5b2e1d96-2574-4ca6-b012-77982374f38a" width="48%" />
+  <img src="https://github.com/user-attachments/assets/d1341983-343c-45e7-9566-f9be88d43672" width="48%" />
+</p>
+
 ---
 
 ## ✨ Features
@@ -321,10 +327,6 @@ Phone → captures image → sends to backend → Flask processes request
 ---
 
 ## 👁️  Surveillance
-<p style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/user-attachments/assets/5b2e1d96-2574-4ca6-b012-77982374f38a" width="48%" />
-  <img src="https://github.com/user-attachments/assets/d1341983-343c-45e7-9566-f9be88d43672" width="48%" />
-</p>
 
 - Live feed streams from webcam at `GET /live_feed`
 - Face recognition runs every 3rd frame (configurable via `PROCESS_EVERY_N_FRAMES`)
