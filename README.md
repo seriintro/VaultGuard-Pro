@@ -3,8 +3,8 @@
 VaultGuard Pro is a full-stack security system that simulates real-world access control using face recognition, multi-factor authentication, and role-based permissions. The system includes gate authentication, live surveillance monitoring, security logging, and an administrative dashboard for system oversight.
 ## 📸 Preview
 
-![Dashboard]
-<img width="1902" height="871" alt="Screenshot 2025-05-18 175555" src="https://github.com/user-attachments/assets/397a9bb7-c7ec-41c7-8a6e-a3c61407841a" />
+[Dashboard]
+<img width="900" height="871" alt="Screenshot 2025-05-18 175555" src="https://github.com/user-attachments/assets/397a9bb7-c7ec-41c7-8a6e-a3c61407841a" />
 
 ---
 
