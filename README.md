@@ -321,6 +321,10 @@ Phone → captures image → sends to backend → Flask processes request
 ---
 
 ## 👁️  Surveillance
+<p align="center">
+<img width="1562" height="615" alt="known" src="https://github.com/user-attachments/assets/5b2e1d96-2574-4ca6-b012-77982374f38a" />
+![unknown](https://github.com/user-attachments/assets/fa78691d-a8de-4dce-bfd7-b1260d6920e2)
+</p>
 
 - Live feed streams from webcam at `GET /live_feed`
 - Face recognition runs every 3rd frame (configurable via `PROCESS_EVERY_N_FRAMES`)
