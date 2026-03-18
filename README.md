@@ -4,8 +4,9 @@ VaultGuard Pro is a full-stack security system that simulates real-world access 
 ## 📸 Preview
 
 [Dashboard]
+<p align="center">
 <img width="900" height="871" alt="Screenshot 2025-05-18 175555" src="https://github.com/user-attachments/assets/397a9bb7-c7ec-41c7-8a6e-a3c61407841a" />
-
+</p>
 ---
 
 ## ✨ Features
