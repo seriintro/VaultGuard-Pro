@@ -321,9 +321,9 @@ Phone → captures image → sends to backend → Flask processes request
 ---
 
 ## 👁️  Surveillance
-<p align="center">
-<img width="1562" height="615" alt="known" src="https://github.com/user-attachments/assets/5b2e1d96-2574-4ca6-b012-77982374f38a" />
-![unknown](https://github.com/user-attachments/assets/fa78691d-a8de-4dce-bfd7-b1260d6920e2)
+<p style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/5b2e1d96-2574-4ca6-b012-77982374f38a" width="48%" />
+  <img src="https://github.com/user-attachments/assets/d1341983-343c-45e7-9566-f9be88d43672" width="48%" />
 </p>
 
 - Live feed streams from webcam at `GET /live_feed`
