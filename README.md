@@ -1,4 +1,4 @@
-#  🚀  VaultGuard Pro — AI-Powered Access Control & Surveillance System
+#  🚀  VaultGuard Pro — Intelligent Computer Vision Access Control & Surveillance System
 
 VaultGuard Pro is a full-stack security system that simulates real-world access control using face recognition, multi-factor authentication, and role-based permissions. The system includes gate authentication, live surveillance monitoring, security logging, and an administrative dashboard for system oversight.
 ## 📸 Preview
